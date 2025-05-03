@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{siunitx}
+\usepackage{float}
+\geometry{margin=1in}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{gray},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  extendedchars=false, % important pour que 'literate' fonctionne bien
+  literate=
+    {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {ë}{{\"e}}1
+    {à}{{\`a}}1 {â}{{\^a}}1 {ä}{{\"a}}1
+    {ç}{{\c{c}}}1
+    {ù}{{\`u}}1 {û}{{\^u}}1 {ü}{{\"u}}1
+    {î}{{\^i}}1 {ï}{{\"i}}1
+    {ô}{{\^o}}1 {ö}{{\"o}}1
+}
+
+\sisetup{output-decimal-marker = {,}, per-mode=symbol, group-separator = {\,}}
+
+\title{Étude d'une centrale thermique solaire}
+\author{Réponses aux questions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Partie I : Étude du récepteur solaire}
+
+\subsection*{1.1}
+Les différentes raisons expliquant l'efficacité de \SI{70}{\percent} entre l'énergie solaire reçue par le récepteur et l'énergie solaire incidente sur les héliostats sont :
+\begin{itemize}
+  \item Réflexions imparfaites et diffusion par les miroirs ;
+  \item Pertes atmosphériques (absorption et diffusion) ;
+  \item Mauvais alignement ou suivi solaire imparfait ;
+  \item Salissures ou vieillissement des héliostats.
+\end{itemize}
+
+\subsection*{1.2}
+La puissance reçue par le récepteur depuis les miroirs est :
+\begin{align*}
+P_{\text{récepteur}} &= S_{\text{hel}} \cdot E_s \cdot \eta_m \\
+&= \SI{75000}{m^2} \cdot \SI{1000}{W.m^{-2}} \cdot 0{,}70 \\
+&= \boxed{\SI{52.5}{MW}}
+\end{align*}
+
+\subsection*{2.1}
+On a :
+\[
+\epsilon(T) = \alpha(T) = \int_{0}^{+\infty} \epsilon_{\lambda}(\lambda) f_{\lambda}(T, \lambda) \, d\lambda
+\]
+(Pour conclure, il faut la data founit en annexe mais ya pas d'annexe...)
+
+\subsection*{2.2}
+Le facteur de forme \( F_{\text{e} \rightarrow \text{r}} \) de l'environnement vers le recepteur vaut trivialement 1, car l'intégralité du flux du rectangle rouge est capté. Par réciprocité :
+\[
+F_{\text{r} \rightarrow \text{e}} = \frac{S_e}{S_r} = \boxed{0{,}65}
+\]
+
+\subsection*{2.3}
+On a :
+\[
+Ra = Gr \cdot Pr
+\quad \text{avec} \quad 
+\Delta T = \SI{254}{K},\quad L = \SI{10}{m},\quad T_m = \SI{420}{K},\quad \beta = \frac{1}{T}
+\]
+Aux conditions données :
+\[
+Pr = 0{,}7,\quad \mu = \SI{2,4e-5}{kg.m^{-1}.s^{-1}},\quad \rho = \SI{0,83}{kg.m^{-3}}, \quad \lambda = \SI{0,035}{W.m^{-1}.K^{-1}}
+\]
+Ainsi $Ra > 10^9$ et on utilise la corrélation :
+\[
+Nu_L = 0{,}13 \cdot (Gr_L \cdot Pr)^{0{,}33}
+\]
+Soit 
+\begin{align*}
+h &= 0{,}13 \cdot \frac{\lambda}{L} \cdot (Gr_L \cdot Pr)^{0{,}33} \\
+&= \boxed{\SI{7,04}{W.m^{-2}.K^{-1}}}
+\end{align*}
+
+\subsection*{3.1}
+La puissance absorbée après \( n \) réflexions est (démonstration par récurrence triviale):
+\[
+\alpha S_{\text{hel}} \eta_m E_s \cdot \left[\rho F_{r \rightarrow r}\right]^n = \alpha S_{\text{hel}} \eta_m E_s \cdot \left[(1 - \alpha)(1 - F_{r \rightarrow e})\right]^n
+\]
+En sommant sur \( n \), on obtient :
+\begin{align*}
+P_{\text{abs}} &= \frac{\alpha}{1 - \alpha \cdot F_{r \rightarrow e}} \cdot S_{\text{hel}} \cdot \eta_m \cdot E_s \\
+&= \frac{0{,}96}{1 - 0{,}96 \cdot 0{,}5} \cdot \SI{52.5e6}{W} \\
+&= \boxed{\SI{90.6}{MW}}
+\end{align*}
+
+\subsection*{3.2}
+Avec l'analogie électrique :
+\[
+\phi^{\text{nette}}_{r \rightarrow e} \cdot R = M^0_e - M^0_r = \sigma \left(T_a^4 - T_r^4\right)
+\]
+où :
+\[
+R = \frac{1 - \epsilon}{\epsilon S} + \frac{1}{S F_{r \rightarrow e}}
+\]
+D'où :
+\[
+\phi^{\text{nette}}_{r \rightarrow e} = \frac{\sigma S (T_a^4 - T_r^4)}{\frac{1 - \epsilon}{\epsilon} + \frac{1}{F_{r \rightarrow e}}}
+\]
+
+\subsection*{3.3}
+On a :
+\[
+\dot{m} = \frac{\SI{66000}{kg.h^{-1}}}{\SI{3600}{s.h^{-1}}} = \SI{18.33}{kg.s^{-1}} \quad
+\Delta h = \SI{2689}{kJ.kg^{-1}} = \SI{2.689e6}{J.kg^{-1}}
+\]
+
+Ainsi la puissance transmise au fluide est:
+\begin{align*}
+P_{\text{fluide}} &= \dot{m} \cdot \Delta h \\ &= \SI{18.33}{kg.s^{-1}} \cdot \SI{2.689e6}{J.kg^{-1}} \\ &= \boxed{\SI{49.3}{MW}}
+\end{align*}
+
+\subsection*{3.4}
+En régime permanent on a:
+\[
+0 = P_{abs} - \phi^{nette}_{r \rightarrow e} - P_{\text{fluide}} + \phi_{convection}
+\]
+Soit:
+\[
+P_{\text{fluide}} - P_{abs}  = -\phi^{nette}_{r \rightarrow e} + \phi_{convection}
+\]
+
+En posant
+\[
+A = P_{\text{fluide}} - P_{abs} \quad B = -\frac{\sigma S}{\frac{1-\epsilon}{\epsilon} + \frac{1}{F_{r \rightarrow e}}} \quad C = 2hS
+\]
+Cela revient à résoudre
+\[
+A = B(T_a^4 - T_r^4) + C(T_a - T_r)
+\]
+En utilisant le script python suivant qui implémente la méthode des itérations sur l'équation linéarisé, il vient $T_r=...$. Blablabla.
+
+\lstinputlisting{resolution_iterations.py}
+
+\end{document}
+
