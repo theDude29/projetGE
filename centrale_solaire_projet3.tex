@@ -94,13 +94,13 @@ h &= 0{,}13 \cdot \frac{\lambda}{L} \cdot (Gr_L \cdot Pr)^{0{,}33} \\
 \subsection*{3.1}
 La puissance absorbée après \( n \) réflexions est (démonstration par récurrence triviale):
 \[
-\alpha S_{\text{hel}} \eta_m E_s \cdot \left[\rho F_{r \rightarrow r}\right]^n = \alpha S_{\text{hel}} \eta_m E_s \cdot \left[(1 - \alpha)(1 - F_{r \rightarrow e})\right]^n
+\alpha S_{\text{hel}} \eta_m E_s \cdot (\rho F_{r \rightarrow r})^n = \alpha S_{\text{hel}} \eta_m E_s \cdot \left[(1 - \alpha)(1 - F_{r \rightarrow e})\right]^n
 \]
 En sommant sur \( n \), on obtient :
 \begin{align*}
 P_{\text{abs}} &= \frac{\alpha}{1 - \alpha \cdot F_{r \rightarrow e}} \cdot S_{\text{hel}} \cdot \eta_m \cdot E_s \\
-&= \frac{0{,}96}{1 - 0{,}96 \cdot 0{,}5} \cdot \SI{52.5e6}{W} \\
-&= \boxed{\SI{90.6}{MW}}
+&= \frac{0{,}96}{1 - 0{,}96 \cdot 0{,}65} \cdot \SI{52.5e6}{W} \\
+&= \boxed{\SI{133,89}{MW}}
 \end{align*}
 
 \subsection*{3.2}
@@ -120,7 +120,7 @@ D'où :
 \subsection*{3.3}
 On a :
 \[
-\dot{m} = \frac{\SI{66000}{kg.h^{-1}}}{\SI{3600}{s.h^{-1}}} = \SI{18.33}{kg.s^{-1}} \quad
+\dot{m} = \frac{\SI{66000}{kg.h^{-1}}}{\SI{3600}{s.h^{-1}}} = \SI{18.33}{kg.s^{-1}}, \quad
 \Delta h = \SI{2689}{kJ.kg^{-1}} = \SI{2.689e6}{J.kg^{-1}}
 \]
 
@@ -147,7 +147,7 @@ Cela revient à résoudre
 \[
 A = B(T_a^4 - T_r^4) + C(T_a - T_r)
 \]
-En utilisant le script python suivant qui implémente la méthode des itérations sur l'équation linéarisé, il vient $T_r=...$. Blablabla.
+En utilisant le script python suivant qui implémente la méthode des itérations sur l'équation linéarisé, il vient $T_r=...$. (il n'y a pas de solution à l'equation proposée... (cf graphique du programme python) je pense que y'a une erreur qlq part, a voir plus tard.
 
 \lstinputlisting{resolution_iterations.py}
 
