@@ -58,11 +58,11 @@ P_{\text{récepteur}} &= S_{\text{hel}} \cdot E_s \cdot \eta_m \\
 \end{align*}
 
 \subsection*{2.1}
-On a :
-\[
-\epsilon(T) = \alpha(T) = \int_{0}^{+\infty} \epsilon_{\lambda}(\lambda) f_{\lambda}(T, \lambda) \, d\lambda
-\]
-(Pour conclure, il faut la data founit en annexe mais ya pas d'annexe...)
+En posant $\lambda_1=\SI{1}{\mu m}, \lambda_2=\SI{6}{\mu m}, \lambda_3=\SI{16}{\mu m}$ et $\epsilon_1=0,98, \epsilon_2 = 0,92, \epsilon_3 = 0,9, \epsilon_4 = 0,75$, on a
+\begin{align*}
+\epsilon(T) &= \alpha(T) \\ &= \int_{0}^{+\infty} \epsilon_{\lambda}(\lambda) f_{\lambda}(T, \lambda) \, d\lambda \\ &= \epsilon_1 \cdot F_{0-\lambda_{1} T} + \epsilon_2 \cdot (F_{0-\lambda_{2} T} - F_{0-\lambda_{1} T}) + \epsilon_3 \cdot (F_{0-\lambda_{3} T} - F_{0-\lambda_{2} T}) + \epsilon_4 \cdot (1 - F_{0-\lambda_{3} T})
+\end{align*}
+Pour $T=547K$ on obtient $\boxed{\epsilon=0,8890}$ et pour $T=5760$, on obtient $\boxed{\alpha=0,9628}$ (en utilisant la table de fraction d'énergie du corps noir fournie en annexe).
 
 \subsection*{2.2}
 Le facteur de forme \( F_{\text{e} \rightarrow \text{r}} \) de l'environnement vers le recepteur vaut trivialement 1, car l'intégralité du flux du rectangle rouge est capté. Par réciprocité :
