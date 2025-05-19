@@ -151,5 +151,40 @@ En utilisant le script python suivant qui implémente la méthode des itération
 
 \lstinputlisting{resolution_iterations.py}
 
+\section*{Partie III : Étude thermodynamique}
+
+\textbf{Caluler les points du cycle}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Point} & \textbf{Température (°C)} & \textbf{Pression (bar)} & \textbf{Entropie massique (kJ/kg·K)} & \textbf{Enthalpie massique (kJ/kg)} & \textbf{Titre vapeur} \\
+\hline
+1 & 280 & 40 & 6260 & 2902 & 1 \\
+\hline
+2 &  & 0,123 & 6950 & 2228 &  \\
+\hline
+3 & 50 & 0,123 &  & 209 & 0 \\
+\hline
+4 &  & 40 &  &  & 0 \\
+\hline
+\end{tabular}
+\caption{Propriétés thermodynamiques aux 4 points du cycle}
+\label{tab:points_thermo}
+\end{table}
+
+calcul valeurs point 1 par coolprop
+calcul rendement point 2, puis coolprop
+point 3 par coolprop, car dans le prolongement
+point 4 calcul rendement
+
+\textbf{Les tracer dans un diagramme T-S}
+insérer photo
+
+\textbf{Calculer la puissance mécanique récupérable pour la production électrique}
+
+\textbf{Calculer le rendement de cycle}
+puissance récupérable / puissance fournie
+
 \end{document}
 
