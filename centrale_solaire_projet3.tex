@@ -152,6 +152,94 @@ En utilisant le script python suivant qui implémente la méthode des itération
 
 \lstinputlisting{resolution_iterations.py}
 
+
+\section*{Partie II}
+
+\subsection*{1}
+\includegraphics[scale=0.25]{2 image.jpg} \\
+D'après l'énoncé on a le débit massique dans la conduite qui vaut $\dot m = 66\ 000 \ kg.h^{-1}$.
+
+On pose la vitesse du fluide (ici un liquide) supposé constante dans toute la conduite (hypothèse à rediscuter par la suite) $v=5 \ m.s^{-1}$ pour un écoulement incompressible. En effet le fluide étant incompressible il conserve son volume, donc dans une conduite où la distribution radiale des vitesses est uniforme, il n'y a pas de raison que la conduite coudée qui part à la verticale ralentisse la vitesse du fluide, l'effet sera seulement ressenti par la pompe qui nécessitera plus de puissance.
+
+A titre comparatif si on faisait circuler un gaz on pourrait remettre en question cette hypothèse car la gravité dans la conduite verticale pourrait compresser ce dernier et ralentir sa circulation. 
+
+Si on commente également la vitesse du fluide de $5 \ m.s^{-1}$ on remarque qu'on reste sur un ordre de grandeur cohérent car dans les installations domestiques on ne doit pas dépasser $1$ à $2 \ m.s^{-1}$ pour des raisons de sécurité et pour limiter les pertes de charges. Ici on se place quand même sur un site de production d'énergie (dont on sait d'après les études en TD sur la centrale nucléaire, l'installation de GNL... qu'ils possèdent des installations de dimension largement supérieures à celle qu'on peut trouver la vie de tous les jours en terme de pression, taille de tuyau, température, vitesse...) ce qui justifie la multiplication par 5 tout en gardant un chiffre assez faible car on verra par la suite que les pertes de charges sont en variation quadratique par rapport à la vitesse du fluide.
+
+A l'aide des définitions de la mécanique des fluides et les résultats concernant les fluides incompressibles on a :
+
+$\dot m = \rho D_v = \rho S v$ où l'on note $\rho$, $D_v$ et $S$ la masse volumique ($kg.m^{-3}$), le débit volumique ($m^3.s^{-1}$) et la section de la surface ($m^2$), respectivement.
+
+Alors $\boxed{S = \frac {\dot m}{\rho v}}$ AN : $S=3,67.10^{-3} \ m^2$.
+
+\subsection*{2}
+En notant $\eta$ la viscosité dynamique du fluide ($Pa.s$) et d le diamètre ($m$) de la conduite :
+
+$Re=\frac{\rho v d}{\eta}$
+
+Avec $\pi (\frac{d}{2})^2=S$ soit $\boxed{d=2 \sqrt {\frac{S}{\pi}}}$ AN : $d=0,068 \ m$.
+
+Ainsi $\boxed{Re = \frac{2 \rho v \sqrt{S}}{\eta \sqrt{\pi}}}$ AN : $Re = 3.10^5 >> 1$.
+
+$Re$ étant très grand, on se trouve en régime turbulent. Celui-ci homogénéise le profil de vitesse à l'intérieur du tube. En effet les pertes par frottement influencent la distribution de vitesse le long du tube, or Re caractérise le rapport entre temps caractéristique de diffusion et de convection, ici les effets d'inertie dominent. Ainsi on a une distribution de vitesse de cette forme : 
+
+\includegraphics[scale=0.25]{1 image.jpg}
+
+Comme on peut le voir celle-ci est uniformisée radialement. 
+
+\subsection*{3}
+Si on schématise la conduite on obtient une conduite de cette forme (schéma non orienté) :
+
+\includegraphics[scale=0.4]{3 image.jpg}
+
+On réalise un bilan de charge de cette forme :
+
+$\Delta \Pi = \delta E_c + \delta E_1 + \delta E_2 + \delta E_e + \delta E_3 +\delta E_s$ en correspondance avec le schéma précédent. Les passages dans la partie 1, 2, 3 sont des pertes linéiques, et les autres des pertes singulières. 
+
+On commence par les pertes linéiques :
+
+$\delta E_i = \lambda \frac{L_i}{d} \frac{1}{2} \rho v^2$ où on estime $\lambda$ (le coefficient de perte de charge linéique) sur le diagramme de Moody ici présent pour les valeurs 
+$$
+\begin{cases}
+Re = 3 \cdot 10^5 \\
+\frac{\varepsilon}{d} = 1{,}5 \cdot 10^{-3}
+\end{cases}
+$$
+
+\includegraphics[scale=0.3]{4 image.jpg}
+
+On en déduit $\lambda=0,0225$ qui vérifie la loi de Colebrook :
+$$
+\frac{1}{\sqrt{\lambda}} = -2 \log_{10} \left( \frac{\varepsilon}{3{,}7d} + \frac{2{,}51}{Re \sqrt{\lambda}} \right)
+$$
+
+Ensuite les pertes singulières :
+
+$\delta E_c = k_c \frac{1}{2} \rho v^2$ d'après l'énoncé pour le coefficient de perte de charge singulière pour la bouche de captage.
+
+$\delta E_e = k_e \frac{1}{2} \rho v^2$ pour la conduite coudée (idem)
+
+$\delta E_s = \xi \frac{1}{2} \rho v^2 \approx (1-\frac{S_e}{S_s})^2 \frac{1}{2} \rho v^2 \approx \frac{1}{2} \rho v^2$ pour un élargissement brusque d'après les résultats du cours.
+
+Finalement $\boxed{\delta E = [(1+k_c+k_e) + \frac{\lambda}{d}(L_1+L_2+L_3)] \frac{1}{2} \rho v^2}$ AN : $\delta E = 7,4$ bar.
+
+\subsection*{4}
+On calcule la différence de charge au long du parcours :
+
+$\Delta \Pi_{total} = \Delta \Pi_{pompe} + \Delta \Pi_{tuyau}$
+
+On utilise la notation E pour la partie évaporateur et C pour la partie condenseur.
+On utilise la définition de la charge (qui revient à utiliser Bernoulli en quelque chose auquel on soustrait la perte de charge) :
+
+$\boxed{\Delta \Pi_{pompe} = P_E - P_C + \rho g(z_E-z_C) - \delta E}$ AN : $\Delta \Pi_{pompe} = 43,8$ bar.
+
+Avec un bilan d'énergie thermodynamique la puissance est de la forme $\mathcal P = \dot m \Delta h = \frac{\dot m}{\rho} \Delta P$ en notant $h$ l'entrophie et $P$ la pression.
+
+Avec cette relation on égalise la puissance effective de la pompe qui a servi à déplacer le fluide, reliée à la perte de charge (qui s'apparente à une différence de pression) et on obtient la relation suivante $\eta \mathcal P = \Delta \Pi_{pompe} \frac{\dot m}{\rho}$.
+
+$\boxed{\mathcal P = \frac{\Delta \Pi_{pompe} \dot m }{\eta \rho}}$ AN : $\mathcal P = 123 \ kW$.
+
+C'est une puissance très élevée, ce qui est normal car comme évoqué à la Question 1 on se trouve dans une centrale de production énergétique de grande dimension, et il n'est pas choquant de trouver des valeurs hors du commun. En effet pour comparaison on trouve que pour une piscine classique une pompe est d'une puissance d'environ 1kW.
+
 \section*{Partie III : Étude thermodynamique}
 
 \textbf{Caluler les points du cycle}
