@@ -66,6 +66,7 @@ En posant $\lambda_1=\SI{1}{\mu m}, \lambda_2=\SI{6}{\mu m}, \lambda_3=\SI{16}{\
 Pour $T=547K$ on obtient $\boxed{\epsilon=0,8890}$ et pour $T=5760$, on obtient $\boxed{\alpha=0,9628}$ (en utilisant la table de fraction d'énergie du corps noir fournie en annexe).
 
 \subsection*{2.2}
+\includegraphics[scale=0.5]{img1.png} \\
 Le facteur de forme \( F_{\text{e} \rightarrow \text{r}} \) de l'environnement vers le recepteur vaut trivialement 1, car l'intégralité du flux du rectangle rouge est capté. Par réciprocité :
 \[
 F_{\text{r} \rightarrow \text{e}} = \frac{S_e}{S_r} = \boxed{0{,}65}
@@ -148,12 +149,12 @@ Cela revient à résoudre
 \[
 A = B(T_a^4 - T_r^4) + C(T_a - T_r)
 \]
-En utilisant le script python suivant qui implémente la méthode des itérations sur l'équation linéarisé, il vient $T_r=...$. (il n'y a pas de solution à l'equation proposée... (cf graphique du programme python) je pense que y'a une erreur qlq part, a voir plus tard.
+En théorie, le script python suivant qui implémente la méthode de résolution par linéarisation devrait donner la température recherchée mais l'équation n'a pas de solution, il doit y avoir une erreur quelque part.
 
 \lstinputlisting{resolution_iterations.py}
 
 
-\section*{Partie II}
+\section*{Partie II : Dimensionnement de la pompe}
 
 \subsection*{1}
 \includegraphics[scale=0.25]{2 image.jpg} \\
